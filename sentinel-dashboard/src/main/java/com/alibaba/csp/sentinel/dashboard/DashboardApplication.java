@@ -19,12 +19,14 @@ import com.alibaba.csp.sentinel.init.InitExecutor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
  * Sentinel dashboard application.
  *
  * @author Carpenter Lee
  */
+@EnableConfigurationProperties
 @SpringBootApplication
 public class DashboardApplication {
 

@@ -79,6 +79,13 @@ public class ParamFlowRuleController {
         }
     }
 
+    /**
+     * 查询规则
+     * @param app
+     * @param ip
+     * @param port
+     * @return
+     */
     @GetMapping("/rules")
     @AuthAction(PrivilegeType.READ_RULE)
     public Result<List<ParamFlowRuleEntity>> apiQueryAllRulesForMachine(@RequestParam String app,
@@ -118,6 +125,11 @@ public class ParamFlowRuleController {
         return ex instanceof CommandNotFoundException;
     }
 
+    /**
+     * 添加规则
+     * @param entity
+     * @return
+     */
     @PostMapping("/rule")
     @AuthAction(AuthService.PrivilegeType.WRITE_RULE)
     public Result<ParamFlowRuleEntity> apiAddParamFlowRule(@RequestBody ParamFlowRuleEntity entity) {
@@ -187,6 +199,12 @@ public class ParamFlowRuleController {
         return null;
     }
 
+    /**
+     * 修改规则
+     * @param id
+     * @param entity
+     * @return
+     */
     @PutMapping("/rule/{id}")
     @AuthAction(AuthService.PrivilegeType.WRITE_RULE)
     public Result<ParamFlowRuleEntity> apiUpdateParamFlowRule(@PathVariable("id") Long id,
@@ -227,6 +245,11 @@ public class ParamFlowRuleController {
         }
     }
 
+    /**
+     * 删除规则
+     * @param id
+     * @return
+     */
     @DeleteMapping("/rule/{id}")
     @AuthAction(PrivilegeType.DELETE_RULE)
     public Result<Long> apiDeleteRule(@PathVariable("id") Long id) {

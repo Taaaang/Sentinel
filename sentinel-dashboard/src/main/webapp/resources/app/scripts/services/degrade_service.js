@@ -8,7 +8,7 @@ app.service('DegradeService', ['$http', function ($http) {
       port: port
     };
     return $http({
-      url: 'degrade/rules.json',
+      url: '/v2/degrade/rules.json',
       params: param,
       method: 'GET'
     });
@@ -16,7 +16,7 @@ app.service('DegradeService', ['$http', function ($http) {
 
   this.newRule = function (rule) {
     return $http({
-        url: '/degrade/rule',
+        url: '/v2/degrade/rule',
         data: rule,
         method: 'POST'
     });
@@ -35,7 +35,7 @@ app.service('DegradeService', ['$http', function ($http) {
         slowRatioThreshold: rule.slowRatioThreshold,
     };
     return $http({
-        url: '/degrade/rule/' + rule.id,
+        url: '/v2/degrade/rule/' + rule.id,
         data: param,
         method: 'PUT'
     });
@@ -43,7 +43,7 @@ app.service('DegradeService', ['$http', function ($http) {
 
   this.deleteRule = function (rule) {
       return $http({
-          url: '/degrade/rule/' + rule.id,
+          url: '/v2/degrade/rule/' + rule.id,
           method: 'DELETE'
       });
   };
@@ -74,7 +74,7 @@ app.service('DegradeService', ['$http', function ($http) {
           return false;
       }
       if (rule.statIntervalMs !== undefined && rule.statIntervalMs > 60 * 1000 * 2) {
-          alert('统计窗口时长不能超过 120 分钟');
+          alert('统计窗口时长不能超过 2 分钟');
           return false;
       }
       // 异常比率类型.
